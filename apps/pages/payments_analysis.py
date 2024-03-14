@@ -2,9 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from script.gold.gold_payments import KpiCalculator
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-import seaborn as sns
+
 
 
 st.set_page_config(page_title='Payments Analysis', layout='wide')
