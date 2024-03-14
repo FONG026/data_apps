@@ -86,3 +86,4 @@ class ProdCatSales:
         ae.sort_values(by='payment_value_y',ascending=False)
         
         return {'Sales per Category': ae}
+    kpi()
