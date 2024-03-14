@@ -10,6 +10,13 @@ st.title('Payments Analysis')
 
 calculator = KpiCalculator('data/cleaned_payments.csv')
 
+geolocation = pd.read_csv('data/olist_geolocation_dataset.csv')
+data = geolocation.drop_duplicates(subset='customer_unique_id')
+
+#Displaying map
+st.write('BEM VINDO AO BRASIL')
+st.map(data, latitude='geolocation_lat', longitude='geolocation_lng', use_container_width=True)
+
 # Displaying the analysis of most used payment methods using st.metrics
 st.write('## Analysis of most used payment methods')
 result = calculator.best_payment_method()
