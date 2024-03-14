@@ -2,6 +2,12 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from script.gold.gold_payments import KpiCalculator
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import seaborn as sns
+import streamlit as st
+import urllib
+import datetime as dt
 
 st.set_page_config(page_title='Payments Analysis', layout='wide')
 st.title('Payments Analysis')
@@ -44,6 +50,28 @@ result = calculator.orders_status()
 orders_status = result['Orders status']
 fig =px.bar(x=orders_status.index, y=orders_status, title='Orders Status', labels={'y': 'Percentage'})
 st.plotly_chart(fig, use_container_width=True)
+
+# Geolocation Dataset
+geolocation = pd.read_csv('data/olist_geolocation_dataset.csv')
+data = geolocation.drop_duplicates(subset='customer_unique_id')
+
+class BrazilMapPlotter:
+    def __init__(self, data, plt, mpimg, urllib, st):
+        self.data = data
+        self.plt = plt
+        self.mpimg = mpimg
+        self.urllib = urllib
+        self.st = st
+
+    def plot(self):
+        brazil = self.mpimg.imread(
+            self.urllib.request.urlopen('https://i.pinimg.com/originals/3a/0c/e1/3a0ce18b3c842748c255bc0aa445ad41.jpg'),
+            'jpg')
+        ax = self.data.plot(kind="scatter", x="geolocation_lng", y="geolocation_lat", figsize=(10, 10), alpha=0.3,
+                            s=0.3, c='maroon')
+        self.plt.axis('off')
+        self.plt.imshow(brazil, extent=[-73.98283055, -33.8, -33.75116944, 5.4])
+        self.st.pyplot()
 
 # Displaying Average Order Value, Max Order Value, Min Order Value, Total Orders, and Total Revenue
 st.header('Order Statistics')
