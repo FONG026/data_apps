@@ -11,7 +11,7 @@ st.title('Payments Analysis')
 calculator = KpiCalculator('data/cleaned_payments.csv')
 
 geolocation = pd.read_csv('data/olist_geolocation_dataset.csv')
-data = geolocation.drop_duplicates(subset='customer_unique_id')
+data = geolocation
 
 #Displaying map
 st.write('BEM VINDO AO BRASIL')
