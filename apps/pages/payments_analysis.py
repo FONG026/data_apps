@@ -4,7 +4,7 @@ import plotly.express as px
 from script.gold.gold_payments import KpiCalculator
 
 
-
+sapersa=pd.read_csv('data/cat_sales.csv')
 st.set_page_config(page_title='Payments Analysis', layout='wide')
 st.title('Payments Analysis')
 
@@ -46,6 +46,9 @@ result = calculator.orders_status()
 orders_status = result['Orders status']
 fig =px.bar(x=orders_status.index, y=orders_status, title='Orders Status', labels={'y': 'Percentage'})
 st.plotly_chart(fig, use_container_width=True)
+
+# Displaying Orders Status as a bar chart
+st.header('Sales per states')
 
 # Displaying Average Order Value, Max Order Value, Min Order Value, Total Orders, and Total Revenue
 st.header('Order Statistics')
