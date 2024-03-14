@@ -41,11 +41,9 @@ st.plotly_chart(fig, use_container_width=True)
 # Displaying Orders Status as a bar chart
 st.header('Orders status')
 result = calculator.orders_status()
-orders_status = result['Orders status']
-order_status
 #fig =px.bar(x=orders_status.index, y=orders_status, title='Orders Status', labels={'y': 'Percentage'})
-#fig=px.pie(values=orders_status.index, names=orders_status.index, title='Orders Status')
-#st.plotly_chart(fig, use_container_width=True)
+fig=px.pie(values=orders_status.index, names=orders_status.index,autopct='%1.1f%%',shadow=True, startangle=90,title='Orders Status')
+st.plotly_chart(fig, use_container_width=True)
 
 # Displaying Average Order Value, Max Order Value, Min Order Value, Total Orders, and Total Revenue
 st.header('Order Statistics')
