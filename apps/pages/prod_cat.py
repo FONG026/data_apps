@@ -1,3 +1,6 @@
+import streamlit as st
+import pandas as pd
+import plotly.express as px
 class ProdCatSales:
     @staticmethod
     def clean(df):
@@ -81,3 +84,7 @@ class ProdCatSales:
 
         ae=prod_cat_ord.groupby('custom_category')['payment_value_y'].sum().reset_index()
         ae.sort_values(by='payment_value_y',ascending=False)
+        fig = px.bar(ae, x='custom_category', y='payment_value_y', title='Payment Value by Custom Category')
+
+# Display the bar chart in Streamlit
+        st.plotly_chart(fig)
