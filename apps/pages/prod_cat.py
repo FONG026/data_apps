@@ -64,11 +64,12 @@ class ProdCatSales:
         }
 
       # Create a function to map custom categories to original categories
-      def map_custom_category(category):
-          for custom_category, categories in custom_categories.items():
-              if category in categories:
-                  return custom_category
-          return 'Other'  # Default category if no match found
+    def map_custom_category(category):
+     for custom_category, categories in custom_categories.items():
+        if category in categories:
+            return custom_category
+        
+        return 'Other'  # Default category if no match found
       
       # Apply the function to create a new column with custom categories
      prod_cat_ord['custom_category'] = prod_cat_ord['product_category_name'].apply(map_custom_category)
@@ -76,11 +77,5 @@ class ProdCatSales:
       # Group by custom category and count the number of occurrences
       #grouped_counts = prod_cat_ord.groupby('custom_category').size().reset_index(name='count')
 
-      ae=prod_cat_ord.groupby('custom_category')['payment_value_y'].sum().reset_index()
-      ae.sort_values(by='payment_value_y',ascending=False)
-      
-
-
-
-
-        return {'Order Sales Per Category':ae )}
+    ae=prod_cat_ord.groupby('custom_category')['payment_value_y'].sum().reset_index()
+    ae.sort_values(by='payment_value_y',ascending=False)
