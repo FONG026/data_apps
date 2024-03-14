@@ -50,7 +50,11 @@ st.plotly_chart(fig, use_container_width=True)
 # Displaying Sales per categories as a bar chart
 st.header('Sales per Categories')
 sales_per_categories=sapersa
-st.write(sales_per_categories)
+#st.write(sales_per_categories)
+fig = px.bar(sales_per_category, x='Category', y='Sales', title='Total Sales per Category')
+
+st.plotly_chart(fig)
+
 #fig =px.bar(x=sales_per_categories.index, y=sales_per_categories, title='Sales Per categories', labels={'y': 'Ammount'})
 #st.plotly_chart(fig, use_container_width=True)
 
