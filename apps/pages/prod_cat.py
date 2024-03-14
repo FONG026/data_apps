@@ -57,13 +57,13 @@ class ProdCatSales:
         }
 
       # Create a function to map custom categories to original categories
-    def map_custom_category(category):
-     for custom_category, categories in custom_categories.items():
-        if category in categories:
-            return custom_category
-        
-        return 'Other'  # Default category if no match found
-      #Merging with the customers_with_complete to have an outlook of the sales next to the category
+        def map_custom_category(category):
+            for custom_category, categories in custom_categories.items():
+                if category in categories:
+                    return custom_category
+            
+                return 'Other'  # Default category if no match found
+        #Merging with the customers_with_complete to have an outlook of the sales next to the category
 
         prod_cat_ord = pd.merge(customers_with_complete, prod_cat_sales_viz_clean, left_on='order_id', right_on='order_id')
          # Apply the function to create a new column with custom categories
@@ -79,5 +79,5 @@ class ProdCatSales:
       # Group by custom category and count the number of occurrences
       #grouped_counts = prod_cat_ord.groupby('custom_category').size().reset_index(name='count')
 
-    ae=prod_cat_ord.groupby('custom_category')['payment_value_y'].sum().reset_index()
-    ae.sort_values(by='payment_value_y',ascending=False)
+        ae=prod_cat_ord.groupby('custom_category')['payment_value_y'].sum().reset_index()
+        ae.sort_values(by='payment_value_y',ascending=False)
