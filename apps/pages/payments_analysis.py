@@ -10,8 +10,9 @@ st.title('Payments Analysis')
 
 calculator = KpiCalculator('data/cleaned_payments.csv')
 
-geolocation = pd.read_csv('data/olist_geolocation_dataset.csv')
-data = geolocation
+# Creation d'un plot pour la geolocalisation
+#geolocation = pd.read_csv('data/olist_geolocation_dataset.csv')
+#data = geolocation
 
 #Displaying map
 st.write('BEM VINDO AO BRASIL')
